@@ -24,7 +24,7 @@ class IndexListingRequest extends FormRequest
     public function rules()
     {
         return [
-            'term' => ['somtimes', 'string', 'max:255']
+            'term' => ['sometimes', 'string', 'max:255']
         ];
     }
 }

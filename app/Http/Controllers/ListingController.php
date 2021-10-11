@@ -10,7 +10,7 @@ class ListingController extends Controller
 {
     public function index(IndexListingRequest $request, IndexListingsAction $indexListingAction) : View
     {
-        $data['listings'] = $indexListingAction($request->validated());
+        $data['listings'] = $indexListingAction($request);
         return view('listing.index', $data);
     }
 }

@@ -2,14 +2,33 @@
 
 namespace App\Actions\Listing ;
 
-use Illuminate\Database\Eloquent\Collection;
+use App\Http\Requests\IndexListingRequest;
 use App\Models\Listing;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class IndexListingsAction {
 
-    public function __invoke()
-    {
-        return Listing::paginate(25);
+    private $query ;
+
+    public function __construct(){
+        $this->query = Listing::query();
     }
+
+    public function __invoke(IndexListingRequest $request) : LengthAwarePaginator
+    {
+        $this->filterByTerm($request);
+        return $this->query->paginate(10);
+    }
+
+    private function filterByTerm(IndexListingRequest $request) : void
+    {
+        if(!$request->filled('term')) {
+            return ;
+        }
+        $term = $request->validated()['term'];
+        $this->query->where('title', 'LIKE', '%'.$term.'%');
+    }
+
+
 
 }
