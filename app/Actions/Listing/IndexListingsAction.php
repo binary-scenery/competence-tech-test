@@ -17,18 +17,16 @@ class IndexListingsAction {
     public function __invoke(IndexListingRequest $request) : LengthAwarePaginator
     {
         $this->filterByTerm($request);
-        return $this->query->paginate(10);
+        return $this->query->orderBy('created_at', 'DESC')->paginate(5);
     }
 
     private function filterByTerm(IndexListingRequest $request) : void
     {
-        if(!$request->filled('term')) {
+        if(!$request->has('term')) {
             return ;
         }
         $term = $request->validated()['term'];
         $this->query->where('title', 'LIKE', '%'.$term.'%');
     }
-
-
-
+    
 }

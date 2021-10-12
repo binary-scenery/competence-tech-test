@@ -1,11 +1,11 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-8">
             <div class="flex">
               
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
@@ -13,12 +13,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('listing.index')" :active="request()->routeIs('listing.index')">
+                    <x-nav-link :href="route('listings.index')" :active="request()->routeIs('listings.index')">
                         {{ __('Listings') }}
                     </x-nav-link>
                 </div>
 
-             
             </div>
 
             <!-- Settings Dropdown -->
@@ -69,6 +68,9 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+              <x-responsive-nav-link :href="route('listings.index')" :active="request()->routeIs('listings.index')">
+                        {{ __('Listings') }}
+                    </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

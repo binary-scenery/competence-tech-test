@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Vacancies') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -29,9 +29,12 @@
 
             <!-- Page Content -->
             <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 md:flex">
-                <div class="md:w-1/5">
-                    @yield('sideNav')
-                </div>
+            
+                @hasSection('sideNav')
+                    <div class="md:w-1/5">
+                        @yield('sideNav')
+                    </div>
+                @endif
                 <div class="md:w-4/5 md:ml-4">
                     @yield('main')
                 </div>

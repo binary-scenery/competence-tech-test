@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexListingRequest extends FormRequest
+class CreateListingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,11 @@ class IndexListingRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'term' => ['sometimes', 'string', 'max:255']
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1024'],
+            'location' => ['required', 'string', 'max:255'],
+            'upper_range' => ['required', 'integer', 'max:10000000'],
+            'lower_range' =>  ['required', 'integer', 'max:10000000'],
         ];
     }
 }

@@ -22,6 +22,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('listings', ListingController::class . '@index')->name('listing.index');
+// vacancy  listings
+Route::get('listings', ListingController::class . '@index')->name('listings.index');
+Route::get('listings/create', ListingController::class . '@create')->name('listings.create');
+Route::post('listings', ListingController::class . '@store')->name('listings.store');
+
+
 
 require __DIR__.'/auth.php';
